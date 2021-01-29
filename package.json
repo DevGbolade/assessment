@@ -1,0 +1,48 @@
+{
+  "name": "assessment",
+  "version": "1.0.0",
+  "description": "Backend Assessment",
+  "main": "server.js",
+  "scripts": {
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./src -s",
+    "build": "npm run clean && npm run build-babel",
+    "start:dev": "cross-env NODE_ENV=development nodemon --exec babel-node src/server.js",
+    "start": "npm run build && node ./build/server.js",
+    "coveralls": "NODE_ENV=test jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "test": "cross-env NODE_ENV=test jest",
+    "test:watch": "jest --watch",
+    "test:cover": "jest --coverage",
+    "lint": "node_modules/.bin/eslint --fix src/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rozay10/assessment.git"
+  },
+  "author": "Agbolade Adeniyi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rozay10/assessment/issues"
+  },
+  "homepage": "https://github.com/rozay10/assessment#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7",
+    "supertest": "^6.1.1",
+    "@babel/cli": "^7.12.10"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/register": "^7.12.10",
+    "eslint": "^7.18.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "jest": "^26.6.3"
+  }
+}
